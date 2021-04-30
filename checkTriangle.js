@@ -28,3 +28,50 @@ Isosceles
 Scalene
 Invalid Triangle. 
 */
+
+// all sides have to be of length > 0
+
+// the sum of the lengths of any two sides must be greater than or equal to the length of the third side
+
+// const side1 = Number(prompt("Enter the 1st side of triangle : "));
+// const side2 = Number(prompt("Enter the 2nd side of triangle : "));
+// const side3 = Number(prompt("Enter the 3rd side of triangle : "));
+
+let sideArray = [];
+
+check(1);
+
+function check(start) {
+  for (let i = start; i <= 3; i++) {
+    let validLength = 0;
+    validLength = Number(prompt(`Enter the side ${i} of triangle : `));
+
+    while (true) {
+      if (validLength > 0) {
+        break;
+      }
+      validLength = Number(prompt(`Please enter a valid length for side ${i}`));
+    }
+
+    sideArray.push(validLength);
+    console.log(sideArray);
+  }
+}
+
+// console.log(sideArray);
+
+while (true) {
+  if (
+    sideArray[0] + sideArray[1] > sideArray[2] &&
+    sideArray[0] + sideArray[2] > sideArray[1] &&
+    sideArray[1] + sideArray[2] > sideArray[0]
+  ) {
+    console.log("OK!");
+    break;
+  }
+  alert("Please try again from the beginning.");
+  sideArray.pop();
+
+  console.log(sideArray);
+  check(3);
+}
